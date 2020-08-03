@@ -2,56 +2,36 @@ package com.example.HelloConstraint;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static android.graphics.Color.rgb;
-
 public class MainActivity extends AppCompatActivity {
-    private int mCount=0;
-    private TextView mShowCount;
-    private Button zero;
-    private Button count;
 
+    private int mCount = 0;
+    private TextView mShowCount;
+
+    public static final String EXTRA_NUMBER
+            = "com.example.HelloConstraint.extra.MESSAGE";
+    public static final int TEXT_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mShowCount = (TextView) findViewById(R.id.show_count);
-        zero = findViewById(R.id.button_zero);
-        count = findViewById(R.id.button_count);
     }
-
-    public void showToast(View view){
-        Toast toast = Toast.makeText(this,R.string.toast_message,Toast.LENGTH_SHORT);
-
-        toast.show();
-
+    public void sayHello(View view) {
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        String  num = mShowCount.getText().toString();
+        intent.putExtra(EXTRA_NUMBER, num);
+        startActivityForResult(intent, TEXT_REQUEST);
     }
-    public void countUp(View view){
-        mCount++;
-        if(mShowCount != null) {
+    public void countUp(View view) {
+        ++mCount;
+        if (mShowCount != null)
             mShowCount.setText(Integer.toString(mCount));
-            if(mCount %2==0) {
-                count.setBackgroundColor(Color.GREEN);
-            }
-            else{
-                count.setBackgroundColor(Color.MAGENTA);
-            }
-        }
-
-
-    }
-
-    public void callMethod(View view) {
-        mCount = 0;
-        mShowCount.setText(Integer.toString(mCount));
-        zero.setBackgroundColor(0xffaaaaaa);
-        count.setBackgroundColor(rgb(98,0,238));
     }
 }

@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Hello Constraint</string>
-    <string name="Toast_text">Toast</string>
+        <string name="app_name">Hello Toast</string>
+    <string name="say_text">Say Hello</string>
     <string name="count_text">Count</string>
     <string name="zero">0</string>
-    <string name="zero_text">Zero</string>
-    <string name="toast_message">Tang Yen Hee 19WMD10994</string>
+    <string name="toast_message">Hello!</string>
+    <string name="number">0</string>
 </resources>
